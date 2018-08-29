@@ -143,21 +143,27 @@ namespace LoginForm
         {
             // Set variables to user inputs
             string userName = txtbox_userName.Text;
+            string passWord = txtbox_passWord.Text;
             // Run Method
-            Unlock(userName);
+            Unlock(userName, passWord);
         }
 
-        private void Unlock(string userName)
+        private void Unlock(string userName, string passWord)
         {
             // Use SQL Connection
             using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
                 // Open Connection
                 sqlconn.Open();
-                // Select Locked from table
-                SqlCommand cmd = new SqlCommand("UPDATE UsersTable SET locked = 0 where userName =@userNameInput", sqlconn);
+                // Select Locked from table and unlock
+                SqlCommand cmd = new SqlCommand("UPDATE UsersTable SET locked = 0 WHERE userName =@userNameInput and passWord =@passWordInput", sqlconn);
                 // Attach values
                 cmd.Parameters.AddWithValue("@userNameInput", userName);
+                cmd.Parameters.AddWithValue("@passWordInput", passWord);
+                // Execture Query
+                cmd.ExecuteNonQuery();
+                // User Message
+                MessageBox.Show("Please try to login again");
             }
         }
 
