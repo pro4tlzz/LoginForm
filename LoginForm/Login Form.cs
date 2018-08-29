@@ -167,8 +167,11 @@ namespace LoginForm
             }
         }
 
-      
-   
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Close Form
+            Application.Exit();
+        }
     }
 }
 

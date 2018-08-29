@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LoginForm")]
+[assembly: AssemblyTitle("Login Form")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mohammed Bilal Habib")]
-[assembly: AssemblyProduct("LoginForm")]
+[assembly: AssemblyProduct("Login Form")]
 [assembly: AssemblyCopyright("Mohammed Bilal Habib")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
