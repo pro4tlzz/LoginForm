@@ -34,6 +34,7 @@
             this.lbl_passWord = new System.Windows.Forms.Label();
             this.txtbox_userName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_Unlock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtbox_passWord
@@ -59,7 +60,7 @@
             // 
             this.btn_Login.AutoSize = true;
             this.btn_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Login.Location = new System.Drawing.Point(193, 267);
+            this.btn_Login.Location = new System.Drawing.Point(80, 274);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(90, 41);
             this.btn_Login.TabIndex = 2;
@@ -95,6 +96,18 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Login Page";
             // 
+            // btn_Unlock
+            // 
+            this.btn_Unlock.AutoSize = true;
+            this.btn_Unlock.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Unlock.Location = new System.Drawing.Point(205, 274);
+            this.btn_Unlock.Name = "btn_Unlock";
+            this.btn_Unlock.Size = new System.Drawing.Size(217, 41);
+            this.btn_Unlock.TabIndex = 6;
+            this.btn_Unlock.Text = "Request Unlock";
+            this.btn_Unlock.UseVisualStyleBackColor = true;
+            this.btn_Unlock.Click += new System.EventHandler(this.btn_Unlock_Click);
+            // 
             // LoginForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -102,6 +115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(471, 389);
+            this.Controls.Add(this.btn_Unlock);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtbox_userName);
             this.Controls.Add(this.lbl_passWord);
@@ -128,6 +142,7 @@
         private System.Windows.Forms.Label lbl_passWord;
         private System.Windows.Forms.TextBox txtbox_userName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_Unlock;
     }
 }
 
