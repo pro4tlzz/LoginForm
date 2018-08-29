@@ -389,10 +389,10 @@ namespace LoginForm {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public UsersTableRow AddUsersTableRow(string userName, string passWord, bool locked) {
+            public UsersTableRow AddUsersTableRow(int Id, string userName, string passWord, bool locked) {
                 UsersTableRow rowUsersTableRow = ((UsersTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        Id,
                         userName,
                         passWord,
                         locked};
@@ -444,11 +444,7 @@ namespace LoginForm {
                 base.Columns.Add(this.columnlocked);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
-                this.columnId.AutoIncrement = true;
-                this.columnId.AutoIncrementSeed = -1;
-                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
-                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnuserName.AllowDBNull = false;
                 this.columnuserName.MaxLength = 50;
@@ -816,18 +812,20 @@ namespace LoginForm.DataSet1TableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_locked", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "locked", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[UsersTable] ([userName], [passWord], [locked]) VALUES (@userNa" +
-                "me, @passWord, @locked);\r\nSELECT Id, userName, passWord, locked FROM UsersTable " +
-                "WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[UsersTable] ([Id], [userName], [passWord], [locked]) VALUES (@" +
+                "Id, @userName, @passWord, @locked);\r\nSELECT Id, userName, passWord, locked FROM " +
+                "UsersTable WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@passWord", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "passWord", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@locked", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "locked", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[UsersTable] SET [userName] = @userName, [passWord] = @passWord, [locked] = @locked WHERE (([Id] = @Original_Id) AND ([userName] = @Original_userName) AND ([passWord] = @Original_passWord) AND ([locked] = @Original_locked));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[UsersTable] SET [Id] = @Id, [userName] = @userName, [passWord] = @passWord, [locked] = @locked WHERE (([Id] = @Original_Id) AND ([userName] = @Original_userName) AND ([passWord] = @Original_passWord) AND ([locked] = @Original_locked));
 SELECT Id, userName, passWord, locked FROM UsersTable WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@userName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@passWord", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "passWord", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@locked", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "locked", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -835,14 +833,13 @@ SELECT Id, userName, passWord, locked FROM UsersTable WHERE (Id = @Id)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_userName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "userName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_passWord", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "passWord", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_locked", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "locked", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::LoginForm.Properties.Settings.Default.LoginConnectionString;
+            this._connection.ConnectionString = global::LoginForm.Properties.Settings.Default.LoginTableConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -947,20 +944,21 @@ SELECT Id, userName, passWord, locked FROM UsersTable WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string userName, string passWord, bool locked) {
+        public virtual int Insert(int Id, string userName, string passWord, bool locked) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
             if ((userName == null)) {
                 throw new global::System.ArgumentNullException("userName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(userName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(userName));
             }
             if ((passWord == null)) {
                 throw new global::System.ArgumentNullException("passWord");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(passWord));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(passWord));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(locked));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(locked));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -981,35 +979,35 @@ SELECT Id, userName, passWord, locked FROM UsersTable WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string userName, string passWord, bool locked, int Original_Id, string Original_userName, string Original_passWord, bool Original_locked, int Id) {
+        public virtual int Update(int Id, string userName, string passWord, bool locked, int Original_Id, string Original_userName, string Original_passWord, bool Original_locked) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
             if ((userName == null)) {
                 throw new global::System.ArgumentNullException("userName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(userName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(userName));
             }
             if ((passWord == null)) {
                 throw new global::System.ArgumentNullException("passWord");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(passWord));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(passWord));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(locked));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(locked));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Id));
             if ((Original_userName == null)) {
                 throw new global::System.ArgumentNullException("Original_userName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_userName));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_userName));
             }
             if ((Original_passWord == null)) {
                 throw new global::System.ArgumentNullException("Original_passWord");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_passWord));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_passWord));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(Original_locked));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Id));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Original_locked));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1031,7 +1029,7 @@ SELECT Id, userName, passWord, locked FROM UsersTable WHERE (Id = @Id)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string userName, string passWord, bool locked, int Original_Id, string Original_userName, string Original_passWord, bool Original_locked) {
-            return this.Update(userName, passWord, locked, Original_Id, Original_userName, Original_passWord, Original_locked, Original_Id);
+            return this.Update(Original_Id, userName, passWord, locked, Original_Id, Original_userName, Original_passWord, Original_locked);
         }
     }
     
