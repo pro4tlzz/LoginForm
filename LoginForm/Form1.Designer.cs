@@ -65,6 +65,7 @@
             this.btn_Login.TabIndex = 2;
             this.btn_Login.Text = "Login";
             this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // lbl_passWord
             // 
@@ -113,6 +114,7 @@
             this.MinimumSize = new System.Drawing.Size(487, 428);
             this.Name = "LoginForm";
             this.Text = "Login Form";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
