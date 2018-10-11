@@ -184,7 +184,7 @@ namespace LoginForm
                 // Attach values
                 cmd.Parameters.AddWithValue("@userNameInput", userName);
                 cmd.Parameters.AddWithValue("@passWordInput", passWord);
-                cmd.Paramaters.AddWithValue("lockedSet", locked);
+                cmd.Paramaters.AddWithValue("@lockedSet", locked);
                 // Execture Query
                 cmd.ExecuteNonQuery();
                 // User Message
