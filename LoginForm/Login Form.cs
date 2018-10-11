@@ -172,6 +172,25 @@ namespace LoginForm
             // Close Form
             Application.Exit();
         }
+          private void Create_Account(string userName, string passWord, bit locked)
+        {
+            // Use SQL Connection
+            using (SqlConnection sqlconn = new SqlConnection(connectionString))
+            {
+                // Open Connection
+                sqlconn.Open();
+                // Select Locked from table and unlock
+                SqlCommand cmd = new SqlCommand("INSERT INTO UsersTable(userName,passWord,locked) WHERE userName =@userNameInput and passWord =@passWordInput and locked =@ lockedSet, sqlconn);
+                // Attach values
+                cmd.Parameters.AddWithValue("@userNameInput", userName);
+                cmd.Parameters.AddWithValue("@passWordInput", passWord);
+                cmd.Paramaters.AddWithValue("lockedSet", locked);
+                // Execture Query
+                cmd.ExecuteNonQuery();
+                // User Message
+                MessageBox.Show("Please try to login again");
+            }
+        }
     }
 }
 
