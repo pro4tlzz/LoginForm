@@ -180,7 +180,7 @@ namespace LoginForm
                 // Open Connection
                 sqlconn.Open();
                 // Select Locked from table and unlock
-                SqlCommand cmd = new SqlCommand("INSERT INTO UsersTable(userName,passWord,locked) WHERE userName =@userNameInput and passWord =@passWordInput and locked =@ lockedSet, sqlconn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO UsersTable(userName,passWord,locked) WHERE userName =@userNameInput and passWord =@passWordInput and locked =@ lockedSet", sqlconn);
                 // Attach values
                 cmd.Parameters.AddWithValue("@userNameInput", userName);
                 cmd.Parameters.AddWithValue("@passWordInput", passWord);
